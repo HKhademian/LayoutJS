@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Builder</title>
+
+    <link rel="stylesheet" href="../Layout/Layout.css">
+    <link rel="stylesheet" href="../tests/test.css">
+</head>
+
+<body style="margin: 0; padding: 0;">
+    <layout-screen>
+        <layout-resizable>
+        </layout-resizable>
+    </layout-screen>
+</body>
+
+
+<script>
+    let _DBG_ID = 0;
+    function createElementFromNode(node) {
+        const type = typeof node === 'object' ? node.type : "text";
+        switch (type.toUpperCase()) {
+            case "SCREEN":
+                return document.createElement("layout-screen");
+            case "STACK":
+                return document.createElement("layout-stack");
+            case "COL":
+            case "VERTICAL":
+                return document.createElement("layout-vertical");
+            case "ROW":
+            case "HORIZONTAL":
+                return document.createElement("layout-horizontal");
+            case "SIDEBAR":
+                return document.createElement("layout-sidebar");
+            case "RESIZABLE":
+                return document.createElement("layout-resizable");
+            case "TEXT":
+            default:
+                console.warn("node type is not supported!", node.type, node);
+                const el = document.createElement("div");
+                el.innerText = "#EL_" + ++_DBG_ID + ": " + node;
+                return el;
+        }
+    }
+
+    function render(root, project) {
+        root.innerHTML = "";
+
+        const queue = [[project, root]];
+        while (queue.length >= 1) {
+            const [node, parentEl] = queue.shift();
+            const element = createElementFromNode(node);
+            parentEl.append(element);
+            if (typeof node == 'object' && node.children) {
+                node.children.forEach(child => {
+                    queue.push([child, element]);
+                });
+            }
+        }
+    }
+
+    const rootElement = document.querySelector("layout-resizable");
+    const shadow = rootElement.attachShadow({ mode: 'open' });
+    shadow.innerHTML = '<slot></slot>';
+
+    render(rootElement, {
+        type: "VERTICAL",
+        children: [
+            {
+                type: "ROW",
+                children: [
+                    "Hi",
+                    {
+                        type: "STACK",
+                        children: [
+                            "Salute",
+                            "Hollo",
+                        ],
+                    },
+                    "Bye",
+                ],
+            },
+            {
+                type: "ROW",
+                children: [
+                    "Salute",
+                    "Hi",
+                    "Halla",
+                    "Tschau",
+                ],
+            },
+        ],
+    });
+
+    const style = document.createElement("style");
+    style.textContent = /*css*/ `
+        :host>*:not(style) {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    `;
+    shadow.prepend(style);
+</script>
+
+</html>
