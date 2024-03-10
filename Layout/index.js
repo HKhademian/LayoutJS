@@ -1,5 +1,5 @@
 export * from "./LayoutBase.js";
-export * from "./LayoutFullScreen.js";
+export * from "./LayoutScreen.js";
 export * from "./LayoutResizable.js";
 export * from "./LayoutStack.js";
 export * from "./LayoutFlow.js";

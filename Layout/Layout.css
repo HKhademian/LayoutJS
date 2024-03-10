@@ -3,7 +3,7 @@
 @layer LayoutBase {
 
     :is(layout-base, .layout-base),
-    :is(layout-full-screen, .layout-full-screen),
+    :is(layout-screen, .layout-screen),
     :is(layout-horizontal, .layout-horizontal),
     :is(layout-row, .layout-row),
     :is(layout-resizable, .layout-resizable),
@@ -37,7 +37,7 @@
     /*
      * Layout FullScreen
      */
-    :is(layout-full-screen, .layout-full-screen) {
+    :is(layout-screen, .layout-screen) {
         width: 100vw;
         height: 100vh;
         display: block;

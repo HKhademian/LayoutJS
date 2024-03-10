@@ -1,6 +1,6 @@
 import { LayoutBase } from "./LayoutBase.js";
 
-export class LayoutFullScreen extends LayoutBase {
+export class LayoutScreen extends LayoutBase {
     static { this.register(this); }
 
     static get style() {

@@ -1,11 +1,10 @@
 @layer reset {
-
-    html,
+    /* html,
     body {
         width: 100vw;
         height: 100vh;
         overflow: hidden;
-    }
+    } */
 
     *,
     *:before,
