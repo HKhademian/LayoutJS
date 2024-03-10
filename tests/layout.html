@@ -6,25 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test My Layout</title>
 
-    <script src="./Layout/Layout.js"></script>
-    <link href="./Layout/Layout.css" rel="stylesheet">
+    <script src="../Layout/Layout.js"></script>
+    <link href="../Layout/Layout.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="./reset.css">
+    <!-- <link rel="stylesheet" href="./reset.css"> -->
     <link rel="stylesheet" href="./test.css">
 </head>
 
-<body>
-    <!-- 
-    <layout-full-screen>
-        <div class="test">
-            <p>Element 1</p>
-            <p>Element 2</p>
-            <p>Element 3</p>
-            <p>Element 4</p>
-            <p>Element 5</p>
-        </div>
-    </layout-full-screen>
- -->
+<body style="margin: 0; padding: 0;">
 
     <layout-full-screen>
         <layout-resizable style="width: 75%; height: 75%;">
@@ -44,7 +33,11 @@
                     <div>Test B.5</div>
                 </layout-horizontal>
                 <div>Test C</div>
-                <div>Test D</div>
+                <layout-stack>
+                    <div>. . . . . . . . . . . . . Back</div>
+                    <div>. . . . . Middle</div>
+                    <div>Fore</div>
+                </layout-stack>
                 <div>Test E</div>
             </layout-vertical>
         </layout-resizable>

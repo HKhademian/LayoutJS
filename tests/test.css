@@ -1,0 +1,13 @@
+div {
+    border: 1px solid;
+    background-color: #AA999966;
+}
+
+div:nth-child(2n) {
+    border: 1px solid;
+    background-color: #99AA9966;
+}
+
+.test:not(:has(:nth-child(5))){
+    display: none;
+}

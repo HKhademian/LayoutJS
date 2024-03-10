@@ -1,0 +1,33 @@
+@layer reset {
+
+    html,
+    body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    *,
+    *:before,
+    *:after {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box !important;
+        -moz-box-sizing: border-box !important;
+        -ms-box-sizing: border-box !important;
+        box-sizing: border-box !important;
+        overflow: hidden;
+    }
+
+    /* 
+    *:not(:defined) {
+        opacity: 0;
+    }
+
+    *:defined {
+        opacity: 1;
+        transition: opacity 0.1s;
+    }
+    */
+
+}
