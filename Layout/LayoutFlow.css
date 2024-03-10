@@ -1,0 +1,32 @@
+@layer Layout {
+
+    :is(layout-flow, .layout-flow) {
+        @layer reset {
+
+            &,
+            &:before,
+            &:after,
+            &>*,
+            &>*:before,
+            &>*:after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+        }
+
+        & {
+            --layout-display: flex;
+            display: var(--layout-display);
+            flex-direction: var(--layout-direction, row);
+        }
+
+        @layer items {
+            &>* {
+                flex: 1;
+            }
+        }
+
+    }
+}

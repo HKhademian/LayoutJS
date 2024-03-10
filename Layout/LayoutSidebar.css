@@ -1,0 +1,43 @@
+@layer Layout {
+    :is(layout-sidebar, .layout-sidebar) {
+        @layer reset {
+
+            &,
+            &:before,
+            &:after,
+            &>*,
+            &>*:before,
+            &>*:after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+        }
+
+        & {
+            --layout-display: flex;
+            display: var(--layout-display);
+        }
+
+        @layer items {
+
+            /** start - side bar */
+            &>:nth-child(1) {
+                display: var(--sidebar-start, var(--layout-display, block));
+            }
+
+            /** main content */
+            &>:nth-child(2) {
+                flex: 1;
+            }
+
+            /** end - side bar */
+            &>:nth-child(3) {
+                display: var(--sidebar-end, var(--layout-display, block));
+            }
+
+        }
+
+    }
+}

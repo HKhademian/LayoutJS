@@ -1,0 +1,33 @@
+@layer Layout {
+
+    :is(layout-horizontal, .layout-horizontal),
+    :is(layout-row, .layout-row) {
+        @layer reset {
+
+            &,
+            &:before,
+            &:after,
+            &>*,
+            &>*:before,
+            &>*:after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+        }
+
+        & {
+            --layout-display: flex;
+            display: var(--layout-display);
+            flex-direction: row;
+        }
+
+        @layer items {
+            &>* {
+                flex: 1;
+            }
+        }
+
+    }
+}

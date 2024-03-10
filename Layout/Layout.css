@@ -1,134 +1,15 @@
-@layer LayoutBase, Layout, LayoutBase.Items, Layout.Items;
+@layer Layout.reset, Layout, Layout.items;
 
-@layer LayoutBase {
+@import url(./LayoutHorizontal.css);
+@import url(./LayoutResizable.css);
+@import url(./LayoutScreen.css);
+@import url(./LayoutStack.css);
+@import url(./LayoutVertical.css);
+@import url(./LayoutFlow.css);
+@import url(./LayoutSidebar.css);
 
-    :is(layout-base, .layout-base),
-    :is(layout-screen, .layout-screen),
-    :is(layout-horizontal, .layout-horizontal),
-    :is(layout-row, .layout-row),
-    :is(layout-resizable, .layout-resizable),
-    :is(layout-stack, .layout-stack),
-    :is(layout-vertical, .layout-vertical),
-    :is(layout-col, .layout-col) {
-
-        &,
-        &:before,
-        &:after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        @layer Items {
-            &>* {
-                box-sizing: border-box;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-            }
-        }
-    }
-
-}
-
-@layer Layout {
-
-    /*
-     * Layout FullScreen
-     */
-    :is(layout-screen, .layout-screen) {
-        width: 100vw;
-        height: 100vh;
-        display: block;
-
-        @layer Items {
-            &>* {
-                width: 100%;
-                height: 100%;
-            }
-        }
-    }
-
-}
-
-@layer Layout {
-
-    /*
-     * Layout Horizontal
-     */
-    :is(layout-horizontal, .layout-horizontal),
-    :is(layout-row, .layout-row) {
-        display: flex;
-        flex-direction: row;
-
-        @layer Items {
-            &>* {
-                flex: 1;
-            }
-        }
-    }
-
-}
-
-@layer Layout {
-
-    /*
-     * Layout Resizable
-     */
-    :is(layout-resizable, .layout-resizable) {
-        border: 2px dotted black;
-        display: block;
-        resize: both;
-
-        @layer Items {
-            &>* {
-                width: 100%;
-                height: 100%;
-            }
-        }
-    }
-
-}
-
-
-@layer Layout {
-
-    /*
-     * Layout Stack
-     */
-    :is(layout-stack, .layout-stack) {
-        display: block;
-        position: relative;
-
-        @layer Items {
-            &>* {
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                width: 100%;
-                height: 100%;
-            }
-        }
-    }
-
-}
-
-@layer Layout {
-
-    /*
-     * Layout Vertical
-     */
-    :is(layout-vertical, .layout-vertical),
-    :is(layout-col, .layout-col) {
-        display: flex;
-        flex-direction: column;
-
-        @layer Items {
-            &>* {
-                flex: 1;
-            }
-        }
-    }
-
+@property --layout-display {
+    syntax: "*";
+    inherits: false;
+    /* initial-value: none; */
 }

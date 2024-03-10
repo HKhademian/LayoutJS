@@ -1,0 +1,33 @@
+@layer Layout {
+
+    :is(layout-vertical, .layout-vertical),
+    :is(layout-col, .layout-col) {
+        @layer reset {
+
+            &,
+            &:before,
+            &:after,
+            &>*,
+            &>*:before,
+            &>*:after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+        }
+
+        & {
+            --layout-display: flex;
+            display: var(--layout-display);
+            flex-direction: column;
+        }
+
+        @layer items {
+            &>* {
+                flex: 1;
+            }
+        }
+
+    }
+}

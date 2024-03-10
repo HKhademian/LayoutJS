@@ -1,0 +1,33 @@
+@layer Layout {
+    :is(layout-screen, .layout-screen) {
+        @layer reset {
+
+            &,
+            &:before,
+            &:after,
+            &>*,
+            &>*:before,
+            &>*:after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+        }
+
+        & {
+            --layout-display: block;
+            display: var(--layout-display);
+            width: 100vw;
+            height: 100vh;
+        }
+
+        @layer items {
+            &>* {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+    }
+}
