@@ -8,6 +8,12 @@
         display: var(--layout-display);
         flex-direction: column;
 
+        @layer items {
+            &>* {
+                flex: 1;
+            }
+        }
+
         @layer reset {
 
             &,
@@ -20,12 +26,6 @@
                 margin: 0;
                 padding: 0;
                 overflow: hidden;
-            }
-        }
-
-        @layer items {
-            &>* {
-                flex: 1;
             }
         }
 
