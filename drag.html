@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag Drop</title>
+    <script type="module" src="./Layout/index.js"></script>
+    <link rel="stylesheet" href="./reset.css">
+
+
+</head>
+
+<body>
+    <layout-full-screen>
+
+        <layout-vertical>
+            <layout-horizontal>
+                <div>Test A.1</div>
+                <div>Test A.2</div>
+                <div>Test A.3</div>
+                <div>Test A.4</div>
+                <div>Test A.5</div>
+            </layout-horizontal>
+            <layout-stack>
+                <div>
+                    *
+                    **
+                    ***
+                </div>
+                <video></video>
+                <div>
+                    From:
+                    <button id="drag" draggable="true" ondragstart="_ondrag(event)">Drag ME</button>
+                </div>
+            </layout-stack>
+            <layout-horizontal>
+                <div ondrop="_ondrop(event)" ondragover="_ondragover(event)">A</div>
+                <div ondrop="_ondrop(event)" ondragover="_ondragover(event)">B</div>
+                <div ondrop="_ondrop(event)" ondragover="_ondragover(event)">C</div>
+            </layout-horizontal>
+        </layout-vertical>
+
+    </layout-full-screen>
+</body>
+
+<script>
+
+    /**
+     * @param {DragEvent} event 
+     */
+    function _ondrag(event) {
+        console.log("dragStartHandler::", event);
+        event.dataTransfer.dropEffect = "copy";
+        event.dataTransfer.setData("text/plain", event.target.id);
+    }
+
+    /**
+     * 
+     */
+    function _ondragover(event) {
+        event.preventDefault();
+    }
+
+    /**
+     * 
+     */
+    function _ondrop(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("text");
+        event.target.appendChild(document.getElementById(data));
+    }
+</script>
+
+</html>

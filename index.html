@@ -6,44 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test My Layout</title>
 
-    <script type="module" src="./Layout.js"></script>
-    <style>
-        html,
-        body {
-            box-sizing: border-box;
-            width: 100vw;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
-
-        div {
-            border: 1px solid;
-            background-color: #AA9999AA;
-        }
-
-        div:nth-child(2n) {
-            border: 1px solid;
-            background-color: #99AA99AA;
-        }
-
-        *:not(:defined) {
-            opacity: 0;
-        }
-
-        *:defined {
-            opacity: 1;
-            transition: opacity 0.1s;
-        }
-    </style>
+    <script type="module" src="./Layout/index.js"></script>
+    <script type="module" src="./Components/index.js"></script>
+    <link rel="stylesheet" href="./reset.css">
 </head>
 
 <body>
 
-    <layout-full-screen>
+    <layout-full-screen style="align-items: center; align-content: center;">
         <layout-resizable style="width: 75%; height: 75%;">
             <layout-vertical>
-                <div>Test A</div>
+                <layout-horizontal>
+                    <div>Test A.1</div>
+                    <div>Test A.2</div>
+                    <div>Test A.3</div>
+                    <div>Test A.4</div>
+                    <div>Test A.5</div>
+                </layout-horizontal>
                 <layout-horizontal>
                     <div>Test B.1</div>
                     <div>Test B.2</div>
