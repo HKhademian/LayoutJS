@@ -7,16 +7,7 @@ body {
     padding: 0;
 }
 
-div {
-    border: 1px solid;
-    background-color: #AA9999AA;
-}
-
-div:nth-child(2n) {
-    border: 1px solid;
-    background-color: #99AA99AA;
-}
-
+/* 
 *:not(:defined) {
     opacity: 0;
 }
@@ -25,3 +16,4 @@ div:nth-child(2n) {
     opacity: 1;
     transition: opacity 0.1s;
 }
+ */

@@ -15,3 +15,8 @@ export class LayoutHorizontal extends LayoutBase {
         }`;
     }
 }
+
+export class LayoutRow extends LayoutBase {
+    static { this.register(this); }
+    static get style() { return LayoutHorizontal.style; }
+}

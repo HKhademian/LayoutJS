@@ -1,5 +1,8 @@
 import { camelToKebab } from "../Utility/Case.js";
 
+/** @type {Record<string, LayoutBase>} */
+export const Layouts = [];
+
 export class LayoutBase extends HTMLElement {
     static { this.register(this); }
 
@@ -8,8 +11,10 @@ export class LayoutBase extends HTMLElement {
     static get _selector() { return camelToKebab(this._className); };
 
     static register(constructor) {
-        customElements.define(constructor._elementName, constructor);
         const _elementName = constructor._elementName;
+        customElements.define(_elementName, constructor);
+        Layouts[_elementName] = constructor;
+
         const style = constructor.style;
         const styleElement =
             // STEP1: first check the cache

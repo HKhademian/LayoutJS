@@ -15,3 +15,8 @@ export class LayoutVertical extends LayoutBase {
         }`;
     }
 }
+
+export class LayoutCol extends LayoutBase {
+    static { this.register(this); }
+    static get style() { return LayoutVertical.style; }
+}

@@ -5,10 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drag Drop</title>
+
+    <!--  Layouts , dynamic -->
     <script type="module" src="./Layout/index.js"></script>
+    <!--  Layouts , static -->
+    <!-- <script src="./Layout/Layout.js"></script>
+    <link href="./Layout/Layout.css" rel="stylesheet"> -->
+
     <link rel="stylesheet" href="./reset.css">
-
-
+    <link rel="stylesheet" href="./test.css">
 </head>
 
 <body>
@@ -18,7 +23,11 @@
             <layout-horizontal>
                 <div>Test A.1</div>
                 <div>Test A.2</div>
-                <div>Test A.3</div>
+                <layout-flow direction="col">
+                    <div>Test A.3.1</div>
+                    <div>Test A.3.2</div>
+                    <div>Test A.3.3</div>
+                </layout-flow>
                 <div>Test A.4</div>
                 <div>Test A.5</div>
             </layout-horizontal>
