@@ -1,195 +1,134 @@
-@layer LayoutBase, Layout, LayoutItemsBase, LayoutItems;
+@layer LayoutBase, Layout, LayoutBase.Items, Layout.Items;
 
 @layer LayoutBase {
 
-    layout-base,
-    layout-base *,
-    .layout-base,
-    .layout-base *,
-    layout-full-screen,
-    layout-full-screen *,
-    .layout-full-screen,
-    .layout-full-screen *,
-    layout-horizontal,
-    layout-horizontal *,
-    .layout-horizontal,
-    .layout-horizontal *,
-    layout-row,
-    layout-row *,
-    .layout-row,
-    .layout-row *,
-    layout-resizable,
-    layout-resizable *,
-    .layout-resizable,
-    .layout-resizable *,
-    layout-stack,
-    layout-stack *,
-    .layout-stack,
-    .layout-stack *,
-    layout-vertical,
-    layout-vertical *,
-    .layout-vertical,
-    .layout-vertical *,
-    layout-col,
-    layout-col *,
-    .layout-col,
-    .layout-col * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
+    :is(layout-base, .layout-base),
+    :is(layout-full-screen, .layout-full-screen),
+    :is(layout-horizontal, .layout-horizontal),
+    :is(layout-row, .layout-row),
+    :is(layout-resizable, .layout-resizable),
+    :is(layout-stack, .layout-stack),
+    :is(layout-vertical, .layout-vertical),
+    :is(layout-col, .layout-col) {
+
+        &,
+        &:before,
+        &:after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        @layer Items {
+            &>* {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+        }
     }
 
 }
 
-@layer LayoutItemsBase {
-
-    layout-base>*,
-    .layout-base>*,
-    layout-full-screen>*,
-    .layout-full-screen>*,
-    layout-horizontal>*,
-    .layout-horizontal>*,
-    layout-row>*,
-    .layout-row>*,
-    layout-resizable>*,
-    .layout-resizable>*,
-    layout-stack>*,
-    .layout-stack>*,
-    layout-vertical>*,
-    .layout-vertical>* layout-col>*,
-    .layout-col>* {
-        width: 100%;
-        height: 100%;
-    }
-}
-
-/*
- * Layout FullScreen
- */
 @layer Layout {
 
-    layout-full-screen,
-    .layout-full-screen {
+    /*
+     * Layout FullScreen
+     */
+    :is(layout-full-screen, .layout-full-screen) {
         width: 100vw;
         height: 100vh;
         display: block;
+
+        @layer Items {
+            &>* {
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
 
 }
 
-@layer LayoutItems {
-
-    layout-full-screen>*,
-    .layout-full-screen>* {
-        width: 100%;
-        height: 100%;
-    }
-
-}
-
-/*
- * Layout Horizontal
- */
 @layer Layout {
 
-    layout-horizontal,
-    .layout-horizontal,
-    layout-row,
-    .layout-row {
+    /*
+     * Layout Horizontal
+     */
+    :is(layout-horizontal, .layout-horizontal),
+    :is(layout-row, .layout-row) {
         display: flex;
         flex-direction: row;
+
+        @layer Items {
+            &>* {
+                flex: 1;
+            }
+        }
     }
 
 }
 
-@layer LayoutItems {
-
-    layout-horizontal>*,
-    .layout-horizontal>*,
-    layout-row>*,
-    .layout-row>* {
-        height: unset;
-        width: unset;
-        flex: 1;
-    }
-
-}
-
-/*
- * Layout Resizable
- */
 @layer Layout {
 
-    layout-resizable,
-    .layout-resizable {
+    /*
+     * Layout Resizable
+     */
+    :is(layout-resizable, .layout-resizable) {
         border: 2px dotted black;
         display: block;
         resize: both;
+
+        @layer Items {
+            &>* {
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
 
 }
 
-@layer LayoutItems {
 
-    layout-resizable>*,
-    .layout-resizable>* {
-        width: 100%;
-        height: 100%;
-    }
-
-}
-
-/*
- * Layout Stack
- */
 @layer Layout {
 
-    layout-stack,
-    .layout-stack {
+    /*
+     * Layout Stack
+     */
+    :is(layout-stack, .layout-stack) {
         display: block;
         position: relative;
+
+        @layer Items {
+            &>* {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
 
 }
 
-@layer LayoutItems {
-
-    layout-stack>*,
-    .layout-stack>* {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-    }
-
-}
-
-/*
- * Layout Vertical
- */
 @layer Layout {
 
-    layout-vertical,
-    .layout-vertical,
-    layout-col,
-    .layout-col {
+    /*
+     * Layout Vertical
+     */
+    :is(layout-vertical, .layout-vertical),
+    :is(layout-col, .layout-col) {
         display: flex;
         flex-direction: column;
-    }
 
-}
-
-@layer LayoutItems {
-
-    layout-vertical>*,
-    .layout-vertical>*,
-    layout-col>*,
-    .layout-col>* {
-        height: unset;
-        width: unset;
-        flex: 1;
+        @layer Items {
+            &>* {
+                flex: 1;
+            }
+        }
     }
 
 }
