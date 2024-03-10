@@ -1,5 +1,12 @@
+@layer Layout.reset, Layout, Layout.items;
+
 @layer Layout {
     :is(layout-screen, .layout-screen) {
+        --layout-display: block;
+        display: var(--layout-display);
+        width: 100vw;
+        height: 100vh;
+
         @layer reset {
 
             &,
@@ -13,13 +20,6 @@
                 padding: 0;
                 overflow: hidden;
             }
-        }
-
-        & {
-            --layout-display: block;
-            display: var(--layout-display);
-            width: 100vw;
-            height: 100vh;
         }
 
         @layer items {

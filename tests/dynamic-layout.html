@@ -25,6 +25,8 @@
         switch (type.toUpperCase()) {
             case "SCREEN":
                 return document.createElement("layout-screen");
+            case "FILL":
+                return document.createElement("layout-fill");
             case "STACK":
                 return document.createElement("layout-stack");
             case "COL":
@@ -47,8 +49,6 @@
     }
 
     function render(root, project) {
-        root.innerHTML = "";
-
         const queue = [[project, root]];
         while (queue.length >= 1) {
             const [node, parentEl] = queue.shift();
@@ -63,47 +63,49 @@
     }
 
     const rootElement = document.querySelector("layout-resizable");
-    const shadow = rootElement.attachShadow({ mode: 'open' });
-    shadow.innerHTML = '<slot></slot>';
 
-    render(rootElement, {
-        type: "VERTICAL",
-        children: [
-            {
-                type: "ROW",
-                children: [
-                    "Hi",
-                    {
-                        type: "STACK",
-                        children: [
-                            "Salute",
-                            "Hollo",
-                        ],
-                    },
-                    "Bye",
-                ],
-            },
-            {
-                type: "ROW",
-                children: [
-                    "Salute",
-                    "Hi",
-                    "Halla",
-                    "Tschau",
-                ],
-            },
-        ],
-    });
-
-    const style = document.createElement("style");
-    style.textContent = /*css*/ `
+    const style = /*css*/ `
         :host>*:not(style) {
             display: block;
             width: 100%;
             height: 100%;
         }
     `;
-    shadow.prepend(style);
+
+    const shadow = rootElement.attachShadow({ mode: 'open' });
+    shadow.innerHTML = '<slot></slot>';
+
+    render(rootElement, {
+        type: "FILL",
+        children: [{
+            type: "VERTICAL",
+            children: [
+                {
+                    type: "ROW",
+                    children: [
+                        "Hi",
+                        {
+                            type: "STACK",
+                            children: [
+                                "Salute",
+                                "Hollo",
+                            ],
+                        },
+                        "Bye",
+                    ],
+                },
+                {
+                    type: "ROW",
+                    children: [
+                        "Salute",
+                        "Hi",
+                        "Halla",
+                        "Tschau",
+                    ],
+                },
+            ],
+        }],
+    });
 </script>
 
 </html>

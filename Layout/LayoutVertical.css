@@ -1,7 +1,13 @@
+@layer Layout.reset, Layout, Layout.items;
+
 @layer Layout {
 
     :is(layout-vertical, .layout-vertical),
     :is(layout-col, .layout-col) {
+        --layout-display: flex;
+        display: var(--layout-display);
+        flex-direction: column;
+
         @layer reset {
 
             &,
@@ -15,12 +21,6 @@
                 padding: 0;
                 overflow: hidden;
             }
-        }
-
-        & {
-            --layout-display: flex;
-            display: var(--layout-display);
-            flex-direction: column;
         }
 
         @layer items {

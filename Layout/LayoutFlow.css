@@ -1,6 +1,12 @@
+@layer Layout.reset, Layout, Layout.items;
+
 @layer Layout {
 
     :is(layout-flow, .layout-flow) {
+        --layout-display: flex;
+        display: var(--layout-display);
+        flex-direction: var(--layout-direction, row);
+
         @layer reset {
 
             &,
@@ -14,12 +20,6 @@
                 padding: 0;
                 overflow: hidden;
             }
-        }
-
-        & {
-            --layout-display: flex;
-            display: var(--layout-display);
-            flex-direction: var(--layout-direction, row);
         }
 
         @layer items {

@@ -1,5 +1,11 @@
+@layer Layout.reset, Layout, Layout.items;
+
 @layer Layout {
     :is(layout-resizable, .layout-resizable) {
+        --layout-display: block;
+        display: var(--layout-display);
+        resize: both;
+
         @layer reset {
 
             &,
@@ -13,12 +19,6 @@
                 padding: 0;
                 overflow: hidden;
             }
-        }
-
-        & {
-            --layout-display: block;
-            display: var(--layout-display);
-            resize: both;
         }
 
         @layer items {
